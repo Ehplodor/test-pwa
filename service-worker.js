@@ -55,6 +55,26 @@ self.addEventListener('fetch', (event) => {
       if (response) {
         console.log('Found ', event.request.url, ' in cache');
         return response;
+      } else {
+        console.log('Network request for ', event.request.url);
+        return fetch(event.request)
+        .then(fetchResponse => {
+            return caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, fetchResponse.clone());
+                return fetchResponse;
+            });
+        })
+        .catch(error => {
+            console.log('Error during fetching : ', error);
+            throw error;
+        });
       }
-      console.log('Network request for ', event.request.url);
-      return fetch(event
+    })
+  );
+});
+
+//In this example, the service worker is using the fetch event to intercept all network requests made by the web page. The caches.match() method is used to check if a copy of the requested resource is stored in the cache. If a cached version of the resource is found, the service worker returns it to the browser.
+//If the resource is not found in the cache, the service worker falls back to the network and attempts to retrieve the resource using the fetch() method. If fetching is successful, it opens the cache and store the new response, then it returns the fetched version of the resource to the browser.
+//The catch statement is there to handle any errors that might occur during the fetching process and log them.
+//It's important to keep in mind that this is a very simple example, and you should take into account many other things that may occur on a production service worker, like handling the update of the resources, handling the deletion of old resources, handling network error and many more.
+  
