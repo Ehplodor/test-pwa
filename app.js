@@ -24,9 +24,9 @@ button.addEventListener('click', showHello);
 
 let video = document.getElementById("webcam");
 
-navigator.permissions.query({name:'camera'}).then(function(permissionStatus) {
-    console.log(permissionStatus.state); // "granted" or "denied"
-});
+//navigator.permissions.query({name:'camera'}).then(function(permissionStatus) {
+//    console.log(permissionStatus.state); // "granted" or "denied"
+//});
 
 navigator.mediaDevices.getUserMedia({
   video: { facingMode: "user" },
