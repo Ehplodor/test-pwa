@@ -3,17 +3,21 @@
   <head>
     <title>Hello, World PWA!</title>
     <link rel="manifest" href="./manifest.json">
-    <link rel="stylesheet" href="./styles.css" media="screen">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   </head>
   <body>
+
     <header>
-      <h1>Simple PWA</h1>
+      <h1 class="text-center">Simple PWA</h1>
     </header>
-    <main>
-      <p>Click the button below to see the "Hello World" message</p>
-      <button id="hello-button">Say Hello</button>
+
+    <main class="container">
+      <p class="text-center">Click the button below to see the "Hello World" message</p>
+      <div class="d-flex justify-content-center">
+         <button id="hello-button" class="btn btn-primary">Say Hello</button>
+      </div>
     </main>
+
     <script src="app.js"></script>
   </body>
 </html>
