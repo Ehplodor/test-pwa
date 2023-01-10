@@ -1,9 +1,13 @@
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    fetch(event.request).catch(() => {
-      return new Response("Hello, World!");
-    })
-  );
+    fetch(event.request)
+    .catch(err => {
+        if(err instanceof TypeError && err.message === "NotAllowedError") {
+            return new Response("Camera access denied");
+        } else {
+            return new Response("Hello, World!");
+        }
+    }));
 });
 
 
