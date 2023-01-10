@@ -13,11 +13,11 @@ self.addEventListener("fetch", (event) => {
 
 // Set the files to cache
 const filesToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/icon.png'
+  './',
+  './index.html',
+  './styles.css',
+  './app.js',
+  './icon256.png'
 ];
 
 // Install event to cache the files
