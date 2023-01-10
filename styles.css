@@ -1,0 +1,46 @@
+/* Add some global styles for the app */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add some basic styling for the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Add some basic styling for the main content area */
+main {
+    padding: 20px;
+}
+
+/* Add some basic styling for buttons */
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add some basic styling for links */
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Add some basic styling for text input fields */
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
