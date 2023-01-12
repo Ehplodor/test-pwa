@@ -10,8 +10,16 @@ const button = document.getElementById('hello-button');
 button.addEventListener('click', showHello);
 
 let video = document.getElementById("webcam");
-
 // const video = document.getElementById('webcam');
+
+navigator.mediaDevices.getUserMedia({
+  video: { facingMode: "user" },
+}).then(stream => {
+  video.srcObject = stream;
+}).catch(error => {
+  console.log("Error: " + error);
+});
+
 
 console.log("### video width and height :");
 console.log(video.width);
