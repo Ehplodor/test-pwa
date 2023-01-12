@@ -43,6 +43,7 @@ document.body.appendChild(canvas);
 console.log("### // Create new object tracker :");
 // Create a new object tracker and pass the 'face' classifier
 var objects = new tracking.ObjectTracker(['face']);
+objects.setStepSize(5);
 
 
 // Listen for the 'track' event and handle it
