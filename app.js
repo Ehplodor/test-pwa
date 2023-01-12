@@ -24,9 +24,6 @@ canvas.height = video.height;
 // Append the canvas to the DOM
 document.body.appendChild(canvas);
 
-// Import the face classifier data 
-<script src="tracking.js/build/data/face.js"></script>
-
 // Create a new object tracker and pass the 'face' classifier
 var objects = new tracking.ObjectTracker(['face']);
 
