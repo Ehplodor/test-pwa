@@ -18,14 +18,16 @@ const canvas = document.createElement('canvas');
 const context = canvas.getContext('2d');
 
 // Set the canvas dimensions to match the video dimensions
-canvas.width = video.width;
-canvas.height = video.height;
+canvas.width = video.layout.width;
+canvas.height = video.layout.height;
+
 
 // Append the canvas to the DOM
 document.body.appendChild(canvas);
 
 // Create a new object tracker and pass the 'face' classifier
 var objects = new tracking.ObjectTracker(['face']);
+
 
 // Listen for the 'track' event and handle it
 objects.on('track', function(event) {
