@@ -13,6 +13,11 @@ button.addEventListener('click', showHello);
 
 const video = document.getElementById('webcam');
 const canvas = document.createElement('canvas');
+const context = canvas.getContext('2d');
+canvas.width = video.width;
+canvas.height = video.height;
+
+document.body.appendChild(canvas);
 
 
 navigator.mediaDevices.getUserMedia({
