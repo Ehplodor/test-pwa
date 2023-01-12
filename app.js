@@ -42,4 +42,4 @@ objects.on('track', function(event) {
 });
 
 // Start tracking heads in the video element with id 'myVideo'
-tracking.track('#myVideo', objects);
+tracking.track('#webcam', objects);
