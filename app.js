@@ -12,37 +12,37 @@ button.addEventListener('click', showHello);
 // let video = document.getElementById("webcam");
 
 const video = document.getElementById('webcam');
+
+// Create a canvas element and a 2D rendering context
 const canvas = document.createElement('canvas');
 const context = canvas.getContext('2d');
+
+// Set the canvas dimensions to match the video dimensions
 canvas.width = video.width;
 canvas.height = video.height;
 
+// Append the canvas to the DOM
 document.body.appendChild(canvas);
 
+// Import the face classifier data 
+<script src="tracking.js/build/data/face.js"></script>
 
-navigator.mediaDevices.getUserMedia({
-  video: { facingMode: "user" },
-}).then(stream => {
-  video.srcObject = stream;
-}).catch(error => {
-  console.log("Error: " + error);
-});
+// Create a new object tracker and pass the 'face' classifier
+var objects = new tracking.ObjectTracker(['face']);
 
-const tracker = new tracking.ObjectTracker('face');
-tracker.setInitialScale(4);
-tracker.setStepSize(2);
-tracker.setEdgesDensity(0.1);
-
-tracking.track('#webcam', tracker, { camera: true });
-
-tracker.on('track', function(event) {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  event.data.forEach(function(rect) {
+// Listen for the 'track' event and handle it
+objects.on('track', function(event) {
+  if (event.data.length === 0) {
+    console.log("No heads were detected in this frame.");
+  } else {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    event.data.forEach(function(rect) {
+      console.log("Head detected at x: " + rect.x + ", y: " + rect.y + ", width: " + rect.width + ", height: " + rect.height);
       context.strokeStyle = '#a64ceb';
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-      context.font = '11px Helvetica';
-      context.fillStyle = "#fff";
-      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
-  });
+    });
+  }
 });
+
+// Start tracking heads in the video element with id 'myVideo'
+tracking.track('#myVideo', objects);
