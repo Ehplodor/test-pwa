@@ -9,22 +9,30 @@ function showHello() {
 const button = document.getElementById('hello-button');
 button.addEventListener('click', showHello);
 
-// let video = document.getElementById("webcam");
+let video = document.getElementById("webcam");
 
-const video = document.getElementById('webcam');
+// const video = document.getElementById('webcam');
+
+console.log("### video width and height :");
+console.log(video.width);
+console.log(video.height);
+
+console.log("### // Create a canvas element and a 2D rendering context :");
 
 // Create a canvas element and a 2D rendering context
 const canvas = document.createElement('canvas');
 const context = canvas.getContext('2d');
 
+console.log("### // Set the canvas dimensions to match the video dimensions :");
 // Set the canvas dimensions to match the video dimensions
-canvas.width = video.layout.width;
-canvas.height = video.layout.height;
+canvas.width = video.width;
+canvas.height = video.height;
 
-
+console.log("### // Append canvas to DOM :");
 // Append the canvas to the DOM
 document.body.appendChild(canvas);
 
+console.log("### // Create new object tracker :");
 // Create a new object tracker and pass the 'face' classifier
 var objects = new tracking.ObjectTracker(['face']);
 
@@ -43,5 +51,6 @@ objects.on('track', function(event) {
   }
 });
 
+console.log("### // Start tracking heads :");
 // Start tracking heads in the video element with id 'myVideo'
 tracking.track('#webcam', objects);
