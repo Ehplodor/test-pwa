@@ -1,3 +1,5 @@
+console.log("main.js loaded!");
+
 // simple function to show "hello world" message when the button is clicked
 function showHello() {
     alert('Hello World!');
